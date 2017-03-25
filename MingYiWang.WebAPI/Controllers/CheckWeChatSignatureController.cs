@@ -11,11 +11,11 @@ using System.Web.Http;
 
 namespace MingYiWang.WebAPI.Controllers
 {
-    public class CheckWeChatSignatureController : ApiController
+    public class SignatureController : ApiController
     {
 
         [HttpGet]
-        public string CheckSignature(string signature, string timestamp, string nonce, string token, string echoStr)
+        public string GetSignature(string signature, string timestamp, string nonce, string token, string echoStr)
         {
 
             

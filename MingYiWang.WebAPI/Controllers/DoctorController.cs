@@ -1,5 +1,6 @@
 ﻿using MingYiWang.Common.Model;
 using MingYiWang.WebAPI.Models;
+using MingYiWang.WebAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,36 +31,15 @@ namespace MingYiWang.WebAPI.Controllers
         /// <returns></returns>
         public ResultApi<List<DoctorQueryResponse>> List([FromBody] DoctorQueryRequest req)
         {
-
-            var lst = new List<DoctorQueryResponse>();
-            var doctor = new DoctorQueryResponse
+            try
             {
-                DeptName = "脑科",
-                DoctorCertNO = "0001",
-                DoctorName = "测试医生列表",
-                SkillDesc = "具有丰富的临床经验，学科带头人",
-                HospitalName = "上海华山医院",
-                OrderCount = 20,
-                Title = "教授"
-            };
-            doctor.DirectReg.DeptId = "0001";
-            doctor.DirectReg.DoctorId = "0001";
-            doctor.DirectReg.HospitalId = "0001";
-            lst.Add(doctor);
-            lst.Add(doctor);
-            var result = new ResultApi<List<DoctorQueryResponse>>();
-            result.Data = lst;
-            return result;
-
+                var service = new DoctorService();
+                return service.GetDoctors();
+            }
+            catch
+            {
+                throw new Exception("获取医生出错了！");
+            }
         }
-
-
-
-
-
-
-
-
-
     }
 }

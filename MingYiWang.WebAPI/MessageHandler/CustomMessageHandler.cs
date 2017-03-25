@@ -36,13 +36,17 @@ namespace MingYiWang.WebAPI.MessageHandler
                 responseMessage.Content = "您没有发送任何消息内容！";
 
             }
-            else if (requestMessage.Content == "帮助")
+            else if (requestMessage.Content == CategoryResource.Help)
             {
                 responseMessage = HelpService.GetResponseMessage(requestMessage);
             }
-            else if (requestMessage.Content == "科室")
+            else if (requestMessage.Content == CategoryResource.Dept)
             {
                 responseMessage = DeptService.GetResponseMessage(requestMessage);
+            }
+            else if (requestMessage.Content == CategoryResource.KeyReg)
+            {
+                responseMessage = KeyRegService.GetResponseMessage(requestMessage);
             }
             return responseMessage;
         }

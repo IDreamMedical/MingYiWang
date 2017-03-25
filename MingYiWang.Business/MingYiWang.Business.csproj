@@ -71,6 +71,7 @@
     <Compile Include="ChangeUserInfo\IChangeUserInfo.cs" />
     <Compile Include="DeptBiz.cs" />
     <Compile Include="DoctorBiz.cs" />
+    <Compile Include="HospitalBiz.cs" />
     <Compile Include="PatientBiz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveUserInfo\ISaveUserInfo.cs" />

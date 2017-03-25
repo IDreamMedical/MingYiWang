@@ -69,6 +69,8 @@
     <Compile Include="AdviceContext.cs" />
     <Compile Include="DeptContext.cs" />
     <Compile Include="DoctorContext.cs" />
+    <Compile Include="HospitalContext.cs" />
+    <Compile Include="HospitalDoctorContext.cs" />
     <Compile Include="SqLiteContext.cs" />
     <Compile Include="PatientContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

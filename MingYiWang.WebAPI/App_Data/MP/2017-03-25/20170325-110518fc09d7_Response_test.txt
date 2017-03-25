@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+  <ToUserName><![CDATA[test]]></ToUserName>
+  <FromUserName><![CDATA[wx4411f958df12e8ae]]></FromUserName>
+  <CreateTime>1490411118</CreateTime>
+  <MsgType><![CDATA[text]]></MsgType>
+  <Content><![CDATA[功能说明。微信预约挂号是指快速挂号，快速就医，减少您的挂号排队时间。
+主要功能是：
+一 随时随地：您可以通过手机微信随时随地预约或取消预约。同时能查看当前科室的预约人数
+二 快速：您可以通过不用排队挂号。
+==============================
+赶快来试试预约功能吧！<a href="http://www.51mingyiwang.com/Doctor/DoctorList.html">预约挂号<a/>
+]]></Content>
+</xml>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+
+ <ToUserName><![CDATA[wx4411f958df12e8ae]]></ToUserName>
+ <FromUserName><![CDATA[test]]></FromUserName>
+ <CreateTime>03251009</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[预约]]></Content>
+ <MsgId>1234567890123456</MsgId>
+ </xml>
