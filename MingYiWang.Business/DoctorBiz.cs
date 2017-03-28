@@ -27,5 +27,24 @@ namespace MingYiWang.Business
             return result;
 
         }
+
+
+        public static Doctor GetDoctor(string doctorId)
+        {
+            var result = new Doctor();
+            try
+            {
+                using (var ctx = new DoctorContext())
+                {
+                    result = ctx.Doctors.FirstOrDefault(o => o.DoctorId == doctorId);
+                }
+            }
+            catch (Exception exp)
+            {
+            }
+            return result;
+
+        }
+
     }
 }

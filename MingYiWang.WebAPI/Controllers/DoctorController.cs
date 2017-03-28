@@ -38,7 +38,23 @@ namespace MingYiWang.WebAPI.Controllers
             }
             catch
             {
-                throw new Exception("获取医生出错了！");
+                throw new Exception("获取医生列表出错了！");
+            }
+        }
+
+        [HttpGet]
+        [ActionName("api/Doctor/Doctor")]
+
+        public ResultApi<DoctorQueryResponse> GetDoctorDetail(string doctorId)
+        {
+            try
+            {
+                var service = new DoctorService();
+                return service.GetDoctor(doctorId);
+            }
+            catch
+            {
+                throw new Exception("获取医生详细信息出错了！");
             }
         }
     }

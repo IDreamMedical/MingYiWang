@@ -7,7 +7,7 @@ namespace MingYiWang.WebAPI.Models
 {
     public class DoctorQueryResponse
     {
-
+        public string DoctorId { get; set; }
         /// <summary>
         /// 用户头像
         /// </summary>

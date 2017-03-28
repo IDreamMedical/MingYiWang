@@ -75,7 +75,7 @@
         <div class="row" style="border-bottom-style:solid;border-bottom-color:#e5e0e0;" v-for="doctor in doctors">
             <div class="col-xs-3">
                 <div class="face_img">
-                    <img src="{{doctor.Avatar}}" class="img-rounded img-responsive">
+                    <img v-bind:src="{{doctor.Avatar}}" class="img-rounded img-responsive">
                 </div>
             </div>
             <div class="col-xs-9">
@@ -91,17 +91,10 @@
                     </span>
                     <p>
                         擅长：{{doctor.SkillDesc}}...
-                        <a href="../doctor/DoctorDetail.html">详情&gt;</a>
+                        <a href="../doctor/DoctorDetail.html?doctorid={{doctor.DoctorId}}">详情&gt;</a>
                     </p>
                 </div>
             </div>
-            <!--<div class="col-xs-4">
-                <div class="doc_ridata">
-                    <span>
-                        <a href="../doctor/DoctorDetail.html">向TA咨询</a>
-                    </span>
-                </div>
-            </div>-->
         </div>
     </template>
     <script src="../js/vue.js"></script>
