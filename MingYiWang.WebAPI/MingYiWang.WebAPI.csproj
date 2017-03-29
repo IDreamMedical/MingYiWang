@@ -293,6 +293,7 @@
     <Content Include="Content\themes\base\images\doctor_lxh.jpg" />
     <Content Include="Content\themes\base\images\doctor_tlx.jpg" />
     <Content Include="Content\themes\base\images\face2Face.png" />
+    <Content Include="Content\themes\base\images\keyReg.png" />
     <Content Include="Content\themes\base\images\online.png" />
     <Content Include="Content\themes\base\images\right.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -404,6 +405,7 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\url.js" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
