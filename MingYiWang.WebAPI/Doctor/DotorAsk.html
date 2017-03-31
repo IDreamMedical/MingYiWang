@@ -9,7 +9,7 @@
 
 <body>
     <div id="app" class="container">
-        <simple-grid :doctor="doctor">
+        <simple-grid :doctor="doctor" :dates="dates">
         </simple-grid>
     </div>
     <template id="grid-template">
@@ -38,8 +38,23 @@
 
             </div>
             <div class="form-group">
-                <my-table :dates="dates">
-                </my-table>
+                <table class="table">
+                    <caption>预约时间</caption>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>上午</th>
+                            <th>下午</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="date in dates">
+                            <td>{{date.WeekStr}}</td>
+                            <td>{{date.CurDate}}</td>
+                            <td>{{date.CanReg}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-md btn-block">微信支付</button>
@@ -48,7 +63,7 @@
         </div>
     </template>
 
-    <script id="simple-table" type="text/x-template">
+    <!--<script id="simple-table" type="text/x-template">
         <table class="table">
             <caption>预约时间</caption>
             <thead>
@@ -59,7 +74,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr is="my-row" :data="date" v-for="date in dates"></tr>
+                <tr v-for="date in dates">
+                    <td>{{date.WeekStr}}</td>
+                    <td>{{date.CurDate}}</td>
+                    <td>{{date.CanReg}}</td>
+                </tr>
             </tbody>
         </table>
     </script>
@@ -70,7 +89,7 @@
             <td>{{date.CurDate}}</td>
             <td>{{date.CanReg}}</td>
         </tr>
-    </script>
+    </script>-->
     <script src="../Scripts/url.js"></script>
     <script src="../js/vue.js"></script>
     <script src="../js/zepto.js"></script>
@@ -79,14 +98,14 @@
     <script>
         Vue.component('simple-grid', {
             template: '#grid-template',
-            props: ['doctor']
+            props: ['doctor', 'dates']
         })
         Vue.component('my-row', {
             template: '#row-template',
-            props: ['date'],
+            props: ['dates'],
             data: function () {
                 return {
-                    date: '',
+                    dates: [],
                 };
             },
             ready: function () {
