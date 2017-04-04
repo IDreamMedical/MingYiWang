@@ -3,68 +3,66 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>一键预约</title>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>医生主页</title>
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css" />
 </head>
 <body>
-    <div id="app" class="container">
+    <div id="container" class="container">
         <simple-grid :doctor="doctor">
         </simple-grid>
     </div>
     <template id="grid-template">
-        <div class="row" style="border-bottom-style:solid;border-bottom-color:#e5e0e0;">
-            <div class="col-xs-3">
-                <div class="face_img">
-                    <img v-bind:src="doctor.Avatar" class="img-rounded img-responsive">
+        <div class="page__bd">
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img v-bind:src="doctor.Avatar" class="weui-media-box__thumb ">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title"> 擅长</h4>
+                            <p class="weui-media-box__desc"> {{doctor.SkillDesc}}...</p>
+                        </div>
+                    </a>
+
                 </div>
             </div>
-            <div class="col-xs-9">
-                <p>
-                    擅长：{{doctor.SkillDesc}}...
-                </p>
-            </div>
         </div>
-        <div class="row" style="border-bottom-style:solid;border-bottom-color:#e5e0e0;">
-            <div class="col-xs-2">
-                <img src="../Content/themes/base/images/online.png" class="img-circle img-responsive" />
-            </div>
-            <div class="col-xs-8">
-                <h4 class="list-group-item-text">
-                    我要问医生
-                </h4>
-                <h6>一次提问，医生回复一条语音/文字</h6>
-            </div>
-            <div class="col-xs-2">
-                <img src="../Content/themes/base/images/right.png" class="img-circle img-responsive" />
-            </div>
-        </div>
-        <div class="row" style="border-bottom-style:solid;border-bottom-color:#e5e0e0;">
-            <div class="col-xs-2">
-                <img src="../Content/themes/base/images/keyReg.png" class="img-circle img-responsive" />
-            </div>
-            <div class="col-xs-8">
-                <h4 class="list-group-item-text">预约</h4>
-                <h6>快速预约，便捷就医</h6>
-            </div>
-            <div class="col-xs-2">
-                <a href="../Doctor/DotorAsk.html">
-                    <img src="../Content/themes/base/images/right.png" class="img-circle img-responsive" />
-                </a>
-            </div>
-        </div>
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access" href="../Doctor/AskDoctor.html">
+                        <div class="weui-cell__hd">
+                            <img src="../Content/themes/base/images/online.png" style="width:30px;margin-right:5px;display:block" />
+                        </div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <h4 class="weui-media-box__title">我要问医生</h4>
+                            <p class="weui-media-box__desc">一次提问，医生回复一条语音/文字</p>
 
-        <div class="row" style="border-bottom-style:solid;border-bottom-color:#e5e0e0;">
-            <div class="col-xs-2">
-                <img src="../Content/themes/base/images/face2Face.png" class="img-circle img-responsive" />
-            </div>
-            <div class="col-xs-8">
-                <h4 class="list-group-item-text">专家面诊</h4>
-                <h6>不排队，专属时间看诊</h6>
-            </div>
-            <div class="col-xs-2">
-                <a href="../Doctor/DotorAsk.html?doctorid={{doctor.doctorid}}">
-                    <img src="../Content/themes/base/images/right.png" class="img-circle img-responsive" />
-                </a>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                    <a class="weui-cell weui-cell_access" href="../Doctor/PatientOrder.html?doctorid={{doctor.DoctorId}}">
+                        <div class="weui-cell__hd">
+                            <img src="../Content/themes/base/images/keyReg.png" style="width:30px;margin-right:5px;display:block" />
+                        </div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <h4 class="weui-media-box__title">预约</h4>
+                            <p class="weui-media-box__desc">快速预约，便捷就医</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                    <a class="weui-cell weui-cell_access" href="../Doctor/DoctorIndex.html?doctorid={{doctor.DoctorId}}">
+                        <div class="weui-cell__hd">
+                            <img src="../Content/themes/base/images/face2Face.png"style="width:30px;margin-right:5px;display:block" />
+                        </div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <h4 class="weui-media-box__title">专家面诊</h4>
+                            <p class="weui-media-box__desc">不排队，专属时间看诊</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </template>
@@ -83,7 +81,7 @@
         var ajaxHelper = new AjaxHelper()
 
         var demo = new Vue({
-            el: '#app',
+            el: '#container',
             data: {
                 doctor: {},
                 apiUrl: '../api/Doctor?doctorId=' + url.doctorid

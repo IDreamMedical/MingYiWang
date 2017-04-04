@@ -15,6 +15,9 @@ namespace MingYiWang.WebAPI.Models
 
         public DateTime CurDate { get; set; }
 
-        public bool CanReg { get; set; }
+        /// <summary>
+        /// 0,表示上午可预约，1表示下午可以预约，-1表示今日不能预约
+        /// </summary>
+        public string  RegValue { get; set; }
     }
 }

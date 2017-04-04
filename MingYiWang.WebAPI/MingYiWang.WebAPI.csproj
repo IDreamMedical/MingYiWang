@@ -358,11 +358,12 @@
     <Content Include="Demo\VueBind.html" />
     <Content Include="Dept\CreateDept.html" />
     <Content Include="Dept\DeptList.html" />
+    <Content Include="Doctor\AskDoctor.html" />
     <Content Include="Doctor\DoctorDetail.html" />
     <Content Include="Doctor\DoctorIndex.html" />
     <Content Include="Doctor\DoctorList.html" />
     <Content Include="Doctor\DoctorRegister.html" />
-    <Content Include="Doctor\DotorAsk.html" />
+    <Content Include="Doctor\PatientOrder.html" />
     <Content Include="Doctor\My.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

@@ -18,8 +18,13 @@ namespace MingYiWang.WebAPI.Services
                 if (curDate.Date == DateTime.Now.Date)
                 {
                     weekStr = "今日";
+                    results.Add(new RegDateResponse { WeekStr = weekStr, CurDate = curDate, RegValue = "1" });
+
                 }
-                results.Add(new RegDateResponse { WeekStr = weekStr, CurDate = curDate, CanReg = true });
+                else
+                {
+                    results.Add(new RegDateResponse { WeekStr = weekStr, CurDate = curDate, RegValue = "0" });
+                }
                 curDate = curDate.AddDays(1);
             }
             return results;

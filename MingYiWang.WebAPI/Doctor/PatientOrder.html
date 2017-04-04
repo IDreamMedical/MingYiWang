@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>预约</title>
+    <link rel="stylesheet" href="http://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css" />
+</head>
+
+<body>
+    <div id="container" class="container">
+        <simple-grid :doctor="doctor" :dates="dates" :url="createRegApiUrl">
+        </simple-grid>
+    </div>
+    <template id="grid-template">
+        <div class="page__hd">
+            <h1 class="page__title">预约</h1>
+            <p class="page__desc">快速预约，便捷就医</p>
+        </div>
+        <div class="page__bd">
+            <div class="weui-cells__title">医生简介</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img v-bind:src="doctor.Avatar" style="width:60px;margin-right:5px;display:block">
+                </div>
+                <div class="weui-cell__bd">
+                    <p>擅长:{{doctor.SkillDesc}}...</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>服务:一对一服务</p>
+                </div>
+            </div>
+            <div class="weui-cells__title">预约时间</div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>日期</p>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>上午</p>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>下午</p>
+                </div>
+            </div>
+
+            <div class="weui-cell" v-for="(index,date) of dates"
+                 v-bind:date="date"
+                 v-bind:index="index">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">{{date.WeekStr}}</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <div class="weui-cells weui-cells_radio" v-if="date.RegValue==='0'">
+                        <label class="weui-cell weui-check__label" for="x {{index}}">
+                            <div class="weui-cell__bd">
+                                <p>可预约</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <input type="radio" class="weui-check" name="radio1" checked="checked" id="x {{index}}">
+                                <span class="weui-icon-checked"></span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="weui-cell__bd">
+                    <div class="weui-cells weui-cells_radio" v-if="date.RegValue==='1'">
+                        <label class="weui-cell weui-check__label" for="x {{index}}">
+                            <div class="weui-cell__bd">
+                                <p>可预约</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <input type="radio" class="weui-check"
+                                       v-bind="{regValue:date.RegValue,workDate:date.CurDate}"
+                                       v-on:click="updateValue($event.currentTarget)" name="radio1" checked="checked" id="x {{index}}">
+                                <span class="weui-icon-checked"></span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">价格</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" v-model="price" type="number" pattern="[0-9]*" placeholder="请输入金额">
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" v-on:click="createReg" class="weui-btn weui-btn_primary">微信支付</a>
+    </template>
+
+    <script src="../Scripts/url.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/zepto.js"></script>
+    <script src="../Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../js/ajax-helper.js"></script>
+    <script>
+        Vue.component('simple-grid', {
+            template: '#grid-template',
+            props: ['doctor', 'dates', 'url'],
+            data: function () {
+
+                return {
+                    regValue: "",
+                    workDate: "",
+                    reged: "",
+                    price: "",
+
+                }
+
+            },
+            methods: {
+                updateValue: function (el) {
+                    this.regValue = $(el).attr("regValue");
+                    this.workDate = $(el).attr("workDate");
+                    this.reged = $(el).attr("checked");
+                },
+                createReg: function () {
+                    var vm = this;
+                    callback = function (data) {
+
+                        vm.$set('dates', data.Data)
+                    }
+                    ajaxHelper.post(vm.url, null, callback)
+                }
+            },
+
+        })
+    </script>
+    <script>
+        var ajaxHelper = new AjaxHelper()
+        var demo = new Vue({
+            el: '#container',
+            data: {
+                doctor: {},
+                dates: [],
+                patientorder: { doctorid: url.doctorid, price: "", time: "" },
+                apiUrl: '../api/Doctor?doctorId=' + url.doctorid,
+                dateApiUrl: '../api/KeyReg/Date?doctorId=' + url.doctorid,
+                createRegApiUrl: '../api/KeyReg/Date'
+            },
+            ready: function () {
+                this.getDoctor();
+                this.getRegDate();
+            },
+            methods: {
+
+                ///获取医生信息
+                getDoctor: function () {
+                    // 定义vm变量，让它指向this,this是当前的Vue实例
+                    var vm = this;
+                    callback = function (data) {
+                        // 由于函数的作用域，这里不能用this
+                        vm.$set('doctor', data.Data)
+                    }
+                    ajaxHelper.get(vm.apiUrl, null, callback)
+                },
+
+                //获取预约时间
+                getRegDate: function () {
+                    // 定义vm变量，让它指向this,this是当前的Vue实例
+                    var vm = this;
+                    callback = function (data) {
+                        // 由于函数的作用域，这里不能用this
+                        vm.$set('dates', data.Data)
+                        vm.$set('createRegApiUrl', this.createRegApiUrl)
+                    }
+                    ajaxHelper.get(vm.dateApiUrl, null, callback)
+                },
+
+
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>
