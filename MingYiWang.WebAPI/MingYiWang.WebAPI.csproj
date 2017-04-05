@@ -265,6 +265,7 @@
     <Compile Include="Models\Response\AdviceResponse.cs" />
     <Compile Include="Models\Response\DoctorQueryResponse.cs" />
     <Compile Include="Models\Response\HospitalResponse.cs" />
+    <Compile Include="Models\Response\PatientorderResponse.cs" />
     <Compile Include="Models\Response\RegDateResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

@@ -9,7 +9,7 @@
 
 <body>
     <div id="container" class="container">
-        <simple-grid :doctor="doctor" :dates="dates" :url="createRegApiUrl">
+        <simple-grid :doctor="doctor" :dates="dates" :url="url" :patientorder="patientorder">
         </simple-grid>
     </div>
     <template id="grid-template">
@@ -58,7 +58,10 @@
                                 <p>可预约</p>
                             </div>
                             <div class="weui-cell__ft">
-                                <input type="radio" class="weui-check" name="radio1" checked="checked" id="x {{index}}">
+                                <input type="radio" class="weui-check"
+                                       v-bind="{regValue:date.RegValue,workDate:date.CurDate}"
+                                       v-on:click="updateValue($event.currentTarget)"
+                                       name="radio1" checked="checked" id="x {{index}}">
                                 <span class="weui-icon-checked"></span>
                             </div>
                         </label>
@@ -85,7 +88,7 @@
                     <label class="weui-label">价格</label>
                 </div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" v-model="price" type="number" pattern="[0-9]*" placeholder="请输入金额">
+                    <input class="weui-input" v-model="patientorder.price" type="number" pattern="[0-9]*" placeholder="请输入金额">
                 </div>
             </div>
         </div>
@@ -100,23 +103,13 @@
     <script>
         Vue.component('simple-grid', {
             template: '#grid-template',
-            props: ['doctor', 'dates', 'url'],
-            data: function () {
-
-                return {
-                    regValue: "",
-                    workDate: "",
-                    reged: "",
-                    price: "",
-
-                }
-
-            },
+            props: ['doctor', 'dates', 'url', 'patientorder'],
             methods: {
                 updateValue: function (el) {
-                    this.regValue = $(el).attr("regValue");
-                    this.workDate = $(el).attr("workDate");
-                    this.reged = $(el).attr("checked");
+                    this.patientorder.RegValue = $(el).attr("regValue");
+                    this.patientorder.WorkDate = $(el).attr("workDate");
+                    this.patientorder.Reged = $(el).attr("checked");
+                    
                 },
                 createReg: function () {
                     var vm = this;
@@ -124,7 +117,8 @@
 
                         vm.$set('dates', data.Data)
                     }
-                    ajaxHelper.post(vm.url, null, callback)
+                    this.patientorder.DoctorId = this.doctor.DoctorId;
+                    ajaxHelper.post(vm.url, vm.patientorder, callback)
                 }
             },
 
@@ -137,10 +131,10 @@
             data: {
                 doctor: {},
                 dates: [],
-                patientorder: { doctorid: url.doctorid, price: "", time: "" },
+                patientorder: {},
                 apiUrl: '../api/Doctor?doctorId=' + url.doctorid,
                 dateApiUrl: '../api/KeyReg/Date?doctorId=' + url.doctorid,
-                createRegApiUrl: '../api/KeyReg/Date'
+                url: ''
             },
             ready: function () {
                 this.getDoctor();
@@ -166,7 +160,7 @@
                     callback = function (data) {
                         // 由于函数的作用域，这里不能用this
                         vm.$set('dates', data.Data)
-                        vm.$set('createRegApiUrl', this.createRegApiUrl)
+                        vm.$set('url', '../api/KeyReg/Reg')
                     }
                     ajaxHelper.get(vm.dateApiUrl, null, callback)
                 },

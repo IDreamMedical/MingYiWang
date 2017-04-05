@@ -1,4 +1,7 @@
-﻿using Senparc.Weixin.MP.Entities;
+﻿using MingYiWang.Business;
+using MingYiWang.Business.Model;
+using MingYiWang.WebAPI.Models;
+using Senparc.Weixin.MP.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +24,31 @@ namespace MingYiWang.WebAPI.Services
             sb.Append(@"赶快来试试预约功能吧！<a href=""http://www.51wenyisheng.com/Doctor/DoctorList.html"">预约挂号</a>\r\n");
             responseMessage.Content = sb.ToString();
             return responseMessage;
+        }
+
+        public static PatientorderResponse Reg(PatientorderRequest req)
+        {
+            var result = new PatientorderResponse();
+            var biz = new PatientOrderBiz(Transferto(req));
+            var apiResult = biz.Save();
+            return new PatientorderResponse
+            {
+
+
+            };
+        }
+
+
+        private static PatientOrder Transferto(PatientorderRequest req)
+        {
+            return new PatientOrder
+            {
+                PatientOrderId = Guid.NewGuid().ToString("N"),
+                DoctorId = req.DoctorId,
+                RegValue = req.RegValue,
+                Reged = req.Reged,
+                WorkDate = req.WorkDate
+            };
         }
     }
 }

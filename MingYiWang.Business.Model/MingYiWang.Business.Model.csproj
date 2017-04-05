@@ -51,6 +51,7 @@
     <Compile Include="Hospital.cs" />
     <Compile Include="HospitalDoctor.cs" />
     <Compile Include="Patient.cs" />
+    <Compile Include="PatientOrder.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Symptom.cs" />

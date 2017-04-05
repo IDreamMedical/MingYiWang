@@ -21,10 +21,11 @@ namespace MingYiWang.WebAPI.Controllers
         /// <param name="req"></param>
         /// <returns></returns>
 
-        public ResultApi<List<DoctorQueryResponse>> Reg([FromBody] KeyRegRequest req)
+        public ResultApi<PatientorderResponse> Reg([FromBody] PatientorderRequest req)
         {
-
-            return new ResultApi<List<DoctorQueryResponse>>();
+            var result = new ResultApi<PatientorderResponse>();
+            result.Data = KeyRegService.Reg(req);
+            return result;
         }
 
         [HttpGet]
