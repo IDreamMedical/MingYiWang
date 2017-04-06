@@ -36,5 +36,27 @@ namespace MingYiWang.WebAPI.Controllers
             var userInfo = new SaveUserInfo(user);
             return userInfo.SaveInfo();
         }
+
+        [HttpPost]
+        public ResultApi<string> Login(LoginRequest req)
+        {
+            var result = new ResultApi<string>();
+            if (null == req)
+            {
+                throw new Exception("参数不能为空");
+            }
+            var userSearchBiz = new UserSearchBiz();
+            var user = userSearchBiz.GetUser(req.EMail, req.Pwd);
+            if (user != null)
+            {
+                result.Data = "../doctor/doctorIndex.html";
+            }
+            else
+            {
+                result.Data = "../patient/patientIndex.html";
+            }
+            return result;
+        }
+
     }
 }

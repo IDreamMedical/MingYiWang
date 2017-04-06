@@ -259,6 +259,7 @@
     <Compile Include="Models\Request\DoctorRegisterRequest.cs" />
     <Compile Include="Models\Request\HospitalRequest.cs" />
     <Compile Include="Models\Request\KeyRegRequest.cs" />
+    <Compile Include="Models\Request\LoginRequest.cs" />
     <Compile Include="Models\Request\PatientInfoChangeRequest.cs" />
     <Compile Include="Models\Request\PatientRegisterRequest.cs" />
     <Compile Include="Models\Request\UserRequest.cs" />
@@ -410,6 +411,7 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\url.js" />
+    <Content Include="User\Login.html" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
