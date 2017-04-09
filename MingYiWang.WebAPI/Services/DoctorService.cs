@@ -65,7 +65,7 @@ namespace MingYiWang.WebAPI.Services
                 result.ReturnMsg = "获取医生医院信息失败";
                 return result;
             }
-            result.Data = Transfer(doctor, hospital);
+            result.Data = Transfer(doctor, hospital, true);
             result.Sucess = true;
             result.ReturnMsg = "获取医生列表成功";
             return result;
@@ -78,20 +78,27 @@ namespace MingYiWang.WebAPI.Services
         /// <param name="doctor"></param>
         /// <param name="hospital"></param>
         /// <returns></returns>
-        private DoctorQueryResponse Transfer(Doctor doctor, Hospital hospital)
+        private DoctorQueryResponse Transfer(Doctor doctor, Hospital hospital, bool showAll = false)
         {
-            return new DoctorQueryResponse()
+            var result = new DoctorQueryResponse()
             {
                 DoctorId = doctor.DoctorId,
                 Avatar = doctor.Avatar,
                 DoctorCertNO = doctor.CertNo,
                 DoctorName = doctor.DoctorName,
-                SkillDesc = doctor.SkillDesc.Length > 30 ? doctor.SkillDesc.Substring(0, 30) : doctor.SkillDesc.Substring(0, doctor.SkillDesc.Length),
                 HospitalName = hospital.HospitalName,
                 DeptName = doctor.DeptName,
                 Title = doctor.Title
-
             };
+            if (showAll)
+            {
+                result.SkillDesc = doctor.SkillDesc;
+            }
+            else
+            {
+                result.SkillDesc = doctor.SkillDesc.Length > 30 ? doctor.SkillDesc.Substring(0, 30) : doctor.SkillDesc.Substring(0, doctor.SkillDesc.Length);
+            }
+            return result;
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Doctor.cs" />
     <Compile Include="Hospital.cs" />
     <Compile Include="HospitalDoctor.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientOrder.cs" />
     <Compile Include="Person.cs" />

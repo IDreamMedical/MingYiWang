@@ -23,7 +23,7 @@ namespace MingYiWang.WebAPI.Controllers
         }
 
         [HttpGet]
-        [ActionName("api/Doctor/Doctors")]
+        [ActionName("Doctors")]
         /// <summary>
         /// 医生列表
         /// </summary>
@@ -43,7 +43,7 @@ namespace MingYiWang.WebAPI.Controllers
         }
 
         [HttpGet]
-        [ActionName("api/Doctor/Doctor")]
+        [ActionName("Doctor")]
 
         public ResultApi<DoctorQueryResponse> GetDoctorDetail(string doctorId)
         {

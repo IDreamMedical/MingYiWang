@@ -71,6 +71,7 @@
     <Compile Include="DoctorContext.cs" />
     <Compile Include="HospitalContext.cs" />
     <Compile Include="HospitalDoctorContext.cs" />
+    <Compile Include="MenuContext.cs" />
     <Compile Include="PatientOrderContext.cs" />
     <Compile Include="SqLiteContext.cs" />
     <Compile Include="PatientContext.cs" />

@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdviceController.cs" />
     <Compile Include="Controllers\CheckWeChatSignatureController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DeptContext.cs" />
     <Compile Include="Controllers\DeptController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Models\Response\AdviceResponse.cs" />
     <Compile Include="Models\Response\DoctorQueryResponse.cs" />
     <Compile Include="Models\Response\HospitalResponse.cs" />
+    <Compile Include="Models\Response\MenuResponse.cs" />
     <Compile Include="Models\Response\PatientorderResponse.cs" />
     <Compile Include="Models\Response\RegDateResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -276,6 +278,7 @@
     <Compile Include="Services\HelpService.cs" />
     <Compile Include="Services\HospitalService.cs" />
     <Compile Include="Services\KeyRegService.cs" />
+    <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\RegDateService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -297,6 +300,7 @@
     <Content Include="Content\themes\base\images\doctor_lxh.jpg" />
     <Content Include="Content\themes\base\images\doctor_tlx.jpg" />
     <Content Include="Content\themes\base\images\face2Face.png" />
+    <Content Include="Content\themes\base\images\icon_tabbar.png" />
     <Content Include="Content\themes\base\images\keyReg.png" />
     <Content Include="Content\themes\base\images\online.png" />
     <Content Include="Content\themes\base\images\right.png" />
@@ -376,6 +380,7 @@
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="js\vue.js" />
     <Content Include="js\zepto.js" />
+    <Content Include="Pages\dashboard.html" />
     <Content Include="Patient\PatientDetail.html" />
     <Content Include="Patient\PatientIndex.html" />
     <Content Include="Patient\PatientRegister.html" />

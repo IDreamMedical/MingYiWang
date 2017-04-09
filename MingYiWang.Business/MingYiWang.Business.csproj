@@ -72,6 +72,7 @@
     <Compile Include="DeptBiz.cs" />
     <Compile Include="DoctorBiz.cs" />
     <Compile Include="HospitalBiz.cs" />
+    <Compile Include="MenuBiz.cs" />
     <Compile Include="PatientBiz.cs" />
     <Compile Include="PatientOrderBiz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
